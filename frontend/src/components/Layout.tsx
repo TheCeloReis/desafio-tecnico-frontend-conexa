@@ -1,0 +1,13 @@
+import React from "react";
+import Appbar from "./Appbar";
+
+function Layout({ children }: { children: React.ReactNode }): JSX.Element {
+  return (
+    <>
+      <Appbar />
+      <div className="pt-14">{children}</div>
+    </>
+  );
+}
+
+export default Layout;
