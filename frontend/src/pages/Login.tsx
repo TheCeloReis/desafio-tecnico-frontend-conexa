@@ -2,8 +2,22 @@ import React from "react";
 import Button from "../components/Button";
 import TextField from "../components/TextField";
 import { MdOutlineHelpOutline } from "react-icons/md";
+import useForm from "../lib/useForm";
+import { reValidEmail } from "../lib/regex";
 
 function Login(): JSX.Element {
+  const { register, formState, isValid, validate } = useForm();
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const isValid = validate(["email", "password"]);
+
+    if (isValid) {
+      console.log("formState :>> ", formState);
+    }
+  };
+
   return (
     <div>
       <header className="h-14 shadow-md w-full flex items-center justify-center">
@@ -24,8 +38,7 @@ function Login(): JSX.Element {
         </div>
 
         <form
-          // prevent default behavior of form submit
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={onSubmit}
           className="w-full px-6 sm:max-w-[235px] sm:px-0"
         >
           <div className="space-y-3 mb-10">
@@ -33,7 +46,20 @@ function Login(): JSX.Element {
               label="E-mail"
               placeholder="Digite seu e-mail"
               type="email"
-              errorMessage="E-mail inválido"
+              {...register("email", {
+                isRequired: true,
+                validate: (value) => {
+                  if (!value) {
+                    return "E-mail é obrigatório";
+                  }
+
+                  if (!reValidEmail.test(value)) {
+                    return "E-mail inválido";
+                  }
+
+                  return false;
+                },
+              })}
             />
 
             <TextField
@@ -48,10 +74,23 @@ function Login(): JSX.Element {
               }
               placeholder="Digite sua senha"
               type="password"
+              {...register("password", {
+                isRequired: true,
+                validate: (value) => {
+                  if (!value || !value.trim()) {
+                    return "Senha é obrigatória";
+                  }
+                  if (value.length < 6) {
+                    return "A senha deve ter no mínimo 8 caracteres";
+                  }
+
+                  return false;
+                },
+              })}
             />
           </div>
 
-          <Button fullWidth type="submit">
+          <Button isDisabled={!isValid} fullWidth type="submit">
             Entrar
           </Button>
         </form>

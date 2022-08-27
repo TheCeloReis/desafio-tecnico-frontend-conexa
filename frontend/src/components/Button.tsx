@@ -17,6 +17,7 @@ function Button(props: PropsType): JSX.Element {
         "transition-colors hover:bg-primary-light",
         {
           "w-full": props.fullWidth,
+          "opacity-60": props.isDisabled,
         }
       )}
       {...buttonProps}
