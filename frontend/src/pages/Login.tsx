@@ -4,22 +4,31 @@ import TextField from "../components/TextField";
 import { MdOutlineHelpOutline } from "react-icons/md";
 import useForm from "../lib/useForm";
 import { reValidEmail } from "../lib/regex";
+import { useAuth } from "../lib/auth-context";
+import clsx from "clsx";
 
 function Login(): JSX.Element {
   const { register, formState, isValid, validate } = useForm();
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
+  const { login, isLoading } = useAuth();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     const isValid = validate(["email", "password"]);
 
     if (isValid) {
-      console.log("formState :>> ", formState);
+      try {
+        setSubmitError(null);
+        await login(formState.email, formState.password);
+      } catch (error: any) {
+        setSubmitError(error.message);
+      }
     }
   };
 
   return (
-    <div>
+    <>
       <header className="h-14 shadow-md w-full flex items-center justify-center">
         <img src="/logo.svg" alt="Conexa Saúde" />
       </header>
@@ -41,7 +50,11 @@ function Login(): JSX.Element {
           onSubmit={onSubmit}
           className="w-full px-6 sm:max-w-[235px] sm:px-0"
         >
-          <div className="space-y-3 mb-10">
+          <div
+            className={clsx("space-y-3 ", {
+              "mb-10": !submitError,
+            })}
+          >
             <TextField
               label="E-mail"
               placeholder="Digite seu e-mail"
@@ -90,12 +103,18 @@ function Login(): JSX.Element {
             />
           </div>
 
-          <Button isDisabled={!isValid} fullWidth type="submit">
+          {submitError && (
+            <div className="border-2 border-red-500 rounded-lg p-2 bg-red-50 text-sm text-red-800 my-4">
+              {submitError}
+            </div>
+          )}
+
+          <Button isDisabled={!isValid || isLoading} fullWidth type="submit">
             Entrar
           </Button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 
