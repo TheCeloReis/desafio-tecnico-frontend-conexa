@@ -1,6 +1,12 @@
 import * as React from "react";
 import { loginWithEmailAndPassword } from "./api";
 
+let token: string | null = null;
+
+export function getToken(): string | null {
+  return token;
+}
+
 type StateType = {
   name: string | null;
   token: string | null;
@@ -26,6 +32,8 @@ const AuthContext = React.createContext(
 function userReducer(state: StateType, action: ActionType): StateType {
   switch (action.type) {
     case "LOGIN": {
+      token = action.token;
+
       return {
         name: action.name,
         token: action.token,
@@ -48,6 +56,8 @@ function userReducer(state: StateType, action: ActionType): StateType {
     }
 
     case "LOGOUT": {
+      token = null;
+
       return {
         name: null,
         token: null,

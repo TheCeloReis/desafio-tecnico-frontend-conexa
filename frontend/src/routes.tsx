@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { lazy } from "react";
+import { Fragment, lazy, Suspense } from "react";
 import { useAuth } from "./lib/auth-context";
 
 const LoginPage = lazy(() => import("./pages/Login"));
@@ -10,16 +10,20 @@ export default function AppRoutes(): JSX.Element {
 
   if (!isLoggedIn) {
     return (
-      <Routes>
-        <Route path="*" element={<LoginPage />} />
-      </Routes>
+      <Suspense fallback={<Fragment />}>
+        <Routes>
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Suspense>
     );
   }
 
   return (
-    <Routes>
-      <Route path="/home" element={<HomePage />} />
-      <Route path="*" element={<Navigate to="/home" />} />
-    </Routes>
+    <Suspense fallback={<Fragment />}>
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/home" />} />
+      </Routes>
+    </Suspense>
   );
 }
