@@ -32,7 +32,10 @@ export async function loginWithEmailAndPassword(
 
     // If using the My JSON Server the token could be a hard coded string, since the server is not running auth.
     // This is just a code to make the example work with my deployed example
-    if (new URL(headers.location).host === "my-json-server.typicode.com") {
+    if (
+      headers.location &&
+      new URL(headers.location).host === "my-json-server.typicode.com"
+    ) {
       return {
         token: "123",
         name: "Gandalf",
