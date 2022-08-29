@@ -40,5 +40,10 @@
       "last_name": "The White",
       "email": "saruman.thewhite@mail.com"
     }
-  ]
+  ],
+  "login": {
+    "id": 1,
+    "name": "Gandalf",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZmFrZSB0b2tlbiJ9.-tvEhfr6_VHfKU9bumcmdvku-IfwZDz2LtjeqZOuH-g"
+  }
 }

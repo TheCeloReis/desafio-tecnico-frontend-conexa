@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { getToken } from "./auth-context";
 
 const api = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 api.interceptors.request.use(async (config) => {
@@ -25,10 +25,19 @@ export async function loginWithEmailAndPassword(
   password: string
 ) {
   try {
-    const { data } = await api.post<PostLoginResponse>("/login", {
+    const { data, headers } = await api.post<PostLoginResponse>("/login", {
       email,
       password,
     });
+
+    // If using the My JSON Server the token could be a hard coded string, since the server is not running auth.
+    // This is just a code to make the example work with my deployed example
+    if (new URL(headers.location).host === "my-json-server.typicode.com") {
+      return {
+        token: "123",
+        name: "Gandalf",
+      };
+    }
 
     return data;
   } catch (error: any) {

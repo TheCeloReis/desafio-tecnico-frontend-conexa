@@ -14,7 +14,6 @@
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
     "msw": "^0.45.0",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
@@ -42,8 +41,7 @@
       "react-app",
       "react-app/jest",
       "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:jsx-a11y/recommended"
+      "plugin:@typescript-eslint/eslint-recommended"
     ]
   },
   "browserslist": {
