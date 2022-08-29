@@ -36,7 +36,7 @@ function Login() {
           </h1>
 
           <img
-            className="hidden sm:block"
+            className="hidden sm:block w-[338px] h-[266px]"
             src="/login-illustration.svg"
             alt=""
           />
