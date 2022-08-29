@@ -3,7 +3,7 @@ import { useAuth } from "../lib/auth-context";
 import clsx from "clsx";
 import Button from "./Button";
 
-function Appbar(): JSX.Element {
+function Appbar() {
   const { logout, isLoggedIn, user } = useAuth();
 
   return (

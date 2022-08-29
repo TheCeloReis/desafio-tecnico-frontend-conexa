@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import ConsultationList from "../components/ConsultationList";
 import BottomBar from "../components/BottomBar";
 
-function Home(): JSX.Element {
+function Home() {
   const { data, error } = useQuery("consultations", async () => {
     const consultations = await getConsultations();
 

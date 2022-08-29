@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import dayjs from "dayjs";
 import React from "react";
 import { useQueryClient, useQuery, useMutation } from "react-query";
@@ -24,7 +23,7 @@ type PropsType = {
   onClose: () => void;
 };
 
-function CreateConsultationModal(props: PropsType): JSX.Element {
+function CreateConsultationModal(props: PropsType) {
   const queryClient = useQueryClient();
   const [feedback, setFeedback] = React.useState({
     show: false,

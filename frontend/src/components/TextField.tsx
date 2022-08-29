@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef, useState } from "react";
 import { AriaTextFieldProps, useTextField } from "@react-aria/textfield";
 import { clsx } from "clsx";
@@ -8,7 +9,7 @@ type PropsType = {
   className?: string;
 } & AriaTextFieldProps;
 
-function TextField(props: PropsType): JSX.Element {
+function TextField(props: PropsType) {
   const ref = useRef(null);
   const [showPassword, setShowPassword] = useState(false);
 

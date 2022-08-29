@@ -71,11 +71,7 @@ function userReducer(state: StateType, action: ActionType): StateType {
   }
 }
 
-function AuthProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = React.useReducer(userReducer, initialState);
   // NOTE: you *might* need to memoize this value
   // Learn more in http://kcd.im/optimize-context

@@ -5,7 +5,7 @@ import { useAuth } from "./lib/auth-context";
 const LoginPage = lazy(() => import("./pages/Login"));
 const HomePage = lazy(() => import("./pages/Home"));
 
-export default function AppRoutes(): JSX.Element {
+export default function AppRoutes() {
   const { isLoggedIn } = useAuth();
 
   if (!isLoggedIn) {

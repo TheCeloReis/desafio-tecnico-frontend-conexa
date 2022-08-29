@@ -7,7 +7,7 @@ import { reValidEmail } from "../lib/regex";
 import { useAuth } from "../lib/auth-context";
 import clsx from "clsx";
 
-function Login(): JSX.Element {
+function Login() {
   const { register, formState, isValid, validate } = useForm();
   const [submitError, setSubmitError] = React.useState<string | null>(null);
   const { login, isLoading } = useAuth();

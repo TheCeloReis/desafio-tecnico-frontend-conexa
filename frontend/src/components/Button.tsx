@@ -7,9 +7,9 @@ type PropsType = {
   variant?: "filled" | "outlined";
 } & AriaButtonProps;
 
-function Button({ variant = "filled", ...props }: PropsType): JSX.Element {
+function Button({ variant = "filled", ...props }: PropsType) {
   const ref = useRef(null);
-  let { buttonProps } = useButton(props, ref);
+  const { buttonProps } = useButton(props, ref);
 
   return (
     <button

@@ -1,3 +1,4 @@
+import React from "react";
 import { render, RenderOptions } from "@testing-library/react";
 import { OverlayProvider } from "react-aria";
 import { QueryClient, QueryClientProvider } from "react-query";

@@ -3,7 +3,7 @@ import Button from "./Button";
 
 import CreateConsultationModal from "./CreateConsultationModal";
 
-function BottomBar(): JSX.Element {
+function BottomBar() {
   const [createModal, setCreateModal] = React.useState(false);
 
   return (

@@ -9,7 +9,7 @@ type PropsType = {
   }[];
 };
 
-function ConsultationList(props: PropsType): JSX.Element {
+function ConsultationList(props: PropsType) {
   return (
     <div>
       <h2 className="font-bold text-gray-dark mb-9">

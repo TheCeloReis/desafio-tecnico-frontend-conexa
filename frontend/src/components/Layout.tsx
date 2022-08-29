@@ -1,7 +1,7 @@
 import React from "react";
 import Appbar from "./Appbar";
 
-function Layout({ children }: { children: React.ReactNode }): JSX.Element {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Appbar />
