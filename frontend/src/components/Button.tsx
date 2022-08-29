@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { AriaButtonProps, useButton } from "@react-aria/button";
+import { AriaButtonProps, useButton } from "react-aria";
 import clsx from "clsx";
 
 type PropsType = {
@@ -14,7 +14,7 @@ function Button({ variant = "filled", ...props }: PropsType): JSX.Element {
   return (
     <button
       className={clsx(
-        "text-sm bg-primary-medium rounded-lg font-bold h-10 px-4",
+        "text-sm rounded-lg font-bold h-10 px-4",
         "transition-colors",
         {
           "w-full": props.fullWidth,

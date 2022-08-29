@@ -1,4 +1,5 @@
 import { render, RenderOptions } from "@testing-library/react";
+import { OverlayProvider } from "react-aria";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 export const queryClient = new QueryClient({
@@ -8,7 +9,9 @@ export const queryClient = new QueryClient({
 });
 
 const AllProviders = ({ children }: { children?: React.ReactNode }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  <OverlayProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  </OverlayProvider>
 );
 
 export * from "@testing-library/react";

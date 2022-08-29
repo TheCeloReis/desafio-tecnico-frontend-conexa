@@ -9,7 +9,7 @@ function Appbar(): JSX.Element {
   return (
     <header
       className={clsx(
-        "h-14 shadow-md w-full flex items-center fixed top-0 left-0 z-20",
+        "h-14 shadow-md w-full flex items-center fixed top-0 left-0 z-20 bg-white",
         isLoggedIn ? "px-4 justify-between" : "justify-center"
       )}
     >

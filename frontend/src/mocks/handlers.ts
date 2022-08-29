@@ -17,7 +17,7 @@ export const handlers = [
 export const allConsultations = rest.get(
   "http://localhost:3333/consultations",
   (req, res, ctx) => {
-    return res.once(
+    return res(
       ctx.status(200),
       ctx.json([
         {
@@ -72,13 +72,77 @@ export const allConsultations = rest.get(
 export const emptyConsultations = rest.get(
   "http://localhost:3333/consultations",
   (req, res, ctx) => {
-    return res.once(ctx.status(200), ctx.json([]));
+    return res(ctx.status(200), ctx.json([]));
   }
 );
 
 export const errorConsultations = rest.get(
   "http://localhost:3333/consultations",
   (req, res, ctx) => {
-    return res.once(ctx.status(500));
+    return res(ctx.status(500));
+  }
+);
+
+export const allPatients = rest.get(
+  "http://localhost:3333/patients",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          id: 1,
+          first_name: "Frodo",
+          last_name: "Baggins",
+          email: "frodo.baggins@mail.com",
+        },
+        {
+          id: 2,
+          first_name: "Samwise",
+          last_name: "Gamgee",
+          email: "samwise.gamgee@mail.com",
+        },
+        {
+          id: 3,
+          first_name: "Saruman",
+          last_name: "The White",
+          email: "saruman.thewhite@mail.com",
+        },
+      ])
+    );
+  }
+);
+
+export const errorPatients = rest.get(
+  "http://localhost:3333/patients",
+  (req, res, ctx) => {
+    return res(ctx.status(500));
+  }
+);
+
+export const emptyPatients = rest.get(
+  "http://localhost:3333/patients",
+  (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json([]));
+  }
+);
+
+export const postSuccessfulConsultation = rest.post(
+  "http://localhost:3333/consultations",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json({
+        patientId: 1,
+        date: "Fri Feb 05 2021 10:20:00 GMT-0300 (Brasilia Standard Time)",
+        id: 5,
+      })
+    );
+  }
+);
+
+export const postErrorConsultation = rest.post(
+  "http://localhost:3333/consultations",
+  (req, res, ctx) => {
+    return res(ctx.status(500));
   }
 );

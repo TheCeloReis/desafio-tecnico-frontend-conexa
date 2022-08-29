@@ -44,7 +44,7 @@ type ConsultationType = {
   id: number;
   patientId: number;
   date: string;
-  patient: PatientType;
+  patient?: PatientType;
 };
 
 type PatientType = {
@@ -54,13 +54,47 @@ type PatientType = {
   email: string;
 };
 
-type GetConsultationsResponse = ConsultationType[];
+export type GetConsultationsResponse = ConsultationType[];
 
 export async function getConsultations(): Promise<GetConsultationsResponse> {
   try {
     const { data } = await api.get<GetConsultationsResponse>(
       "/consultations?_expand=patient"
     );
+
+    return data;
+  } catch (error: any) {
+    if ((error as AxiosError).response?.status === 403) {
+      throw new Error("Você não tem permissão para acessar essa página");
+    }
+
+    throw new Error("Erro desconhecido, tente novamente");
+  }
+}
+
+export async function postConsultation(
+  patientId: number,
+  date: string
+): Promise<ConsultationType> {
+  try {
+    const { data } = await api.post<ConsultationType>("/consultations", {
+      patientId,
+      date,
+    });
+
+    return data;
+  } catch (error: any) {
+    if ((error as AxiosError).response?.status === 403) {
+      throw new Error("Você não tem permissão para acessar essa página");
+    }
+
+    throw new Error("Erro desconhecido, tente novamente");
+  }
+}
+
+export async function getPatients(): Promise<PatientType[]> {
+  try {
+    const { data } = await api.get<PatientType[]>("/patients");
 
     return data;
   } catch (error: any) {
