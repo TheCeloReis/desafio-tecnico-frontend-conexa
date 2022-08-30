@@ -27,9 +27,20 @@ function Home() {
 
         <div className="max-w-xl mx-auto">
           {error ? (
-            <div>
-              <p className="text-center text-bold text-2xl text-red-900">
+            <div className="flex flex-col items-center">
+              <p className="text-center text-bold text-2xl sm:text-3xl mb-4 text-red-700 font-bold">
                 Erro ao carregar
+              </p>
+
+              <img
+                className="sm:w-[400px] mb-6"
+                src="/listing-error.svg"
+                alt="Erro"
+              />
+
+              <p className="mb-6 sm:w-80 text-gray-dark text-center">
+                Parece que temos um problema no servidor, tente novamente mais
+                tarde.
               </p>
             </div>
           ) : data?.length === 0 ? (
