@@ -160,6 +160,7 @@ function CreateConsultationModal(props: PropsType) {
           isOpen
           confirmText="Entendi"
           isDismissable
+          disabledPreventScroll
           onClose={() => {
             setFeedback((s) => ({ ...s, show: false }));
             if (feedback.variant === "success") {

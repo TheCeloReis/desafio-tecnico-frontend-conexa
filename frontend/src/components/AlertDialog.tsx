@@ -12,26 +12,28 @@ import {
 } from "react-aria";
 import Button from "./Button";
 
-type ModalProps = {
+type PropsType = {
   title: string;
   confirmText?: React.ReactNode;
   description?: React.ReactNode;
   variant?: "error" | "success";
+  disabledPreventScroll?: boolean;
 } & AriaOverlayProps &
   AriaDialogProps;
 
 function AlertDialog({
+  disabledPreventScroll,
   confirmText,
   description,
   variant,
   ...props
-}: ModalProps) {
+}: PropsType) {
   const { title } = props;
 
   const ref = useRef(null);
   const { overlayProps, underlayProps } = useOverlay(props, ref);
 
-  usePreventScroll();
+  usePreventScroll({ isDisabled: disabledPreventScroll });
   const { modalProps } = useModal();
 
   const { dialogProps, titleProps } = useDialog(props, ref);
