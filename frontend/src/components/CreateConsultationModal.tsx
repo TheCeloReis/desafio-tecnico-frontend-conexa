@@ -46,7 +46,7 @@ function CreateConsultationModal(props: PropsType) {
   );
 
   const onSubmit = async () => {
-    const isValid = validate(["patient", "date"]);
+    const isValid = validate(["patient", "date", "time"]);
 
     const consultationDatetime = new Date(
       `${formState.date} ${formState.time}`
