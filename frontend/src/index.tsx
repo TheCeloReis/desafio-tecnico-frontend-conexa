@@ -4,6 +4,22 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDZAAO4xkQAqj7tYStK6O02DBvzoLFPZ58",
+  authDomain: "conexa-saude.firebaseapp.com",
+  projectId: "conexa-saude",
+  storageBucket: "conexa-saude.appspot.com",
+  messagingSenderId: "348988171909",
+  appId: "1:348988171909:web:8a0b9051f059d59c586bec",
+};
+
+const app = initializeApp(firebaseConfig);
+getAnalytics(app);
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
