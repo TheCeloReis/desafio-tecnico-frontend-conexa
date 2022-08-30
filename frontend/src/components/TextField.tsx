@@ -22,7 +22,11 @@ function TextField(props: PropsType) {
         <label className="text-sm text-gray-dark" {...labelProps}>
           {props.label}
         </label>
-        <input className="text-sm" {...inputProps} ref={ref} />
+        <input
+          className={clsx("text-sm", { italic: !inputProps.value })}
+          {...inputProps}
+          ref={ref}
+        />
         {props.description && (
           <div {...descriptionProps} style={{ fontSize: 12 }}>
             {props.description}

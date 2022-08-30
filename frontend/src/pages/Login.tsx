@@ -31,7 +31,7 @@ function Login() {
     <>
       <div className="sm:flex sm:items-center sm:justify-around sm:h-[calc(100vh-56px)] sm:pb-64">
         <div className="space-y-16 mb-11 sm:mb-0">
-          <h1 className="text-center text-3xl sm:text-6xl text-primary-dark font-bold mt-9">
+          <h1 className="text-center text-3xl sm:text-6xl text-primary-dark font-bold mt-9 font-montserrat">
             Faça Login
           </h1>
 
